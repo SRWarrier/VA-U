@@ -1,0 +1,27 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.error-page__title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.error-page__message {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.error-page__suggestion {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.error-page__image {
+  max-width: 300px;
+}

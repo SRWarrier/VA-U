@@ -1,0 +1,18 @@
+.game-table {
+  background-color: #212121;
+  color: #ffffff;
+}
+
+.ant-table-thead th {
+  background-color: #323232;
+  color: #ffffff;
+}
+
+.ant-table-tbody tr {
+  background-color: #3b3b3b;
+}
+
+.ant-table-tbody tr:hover {
+  background-color: #444444;
+  cursor: pointer;
+}

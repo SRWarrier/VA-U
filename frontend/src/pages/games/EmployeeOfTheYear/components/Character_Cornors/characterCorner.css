@@ -1,0 +1,20 @@
+.EOTM__corner-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.EOTM__character--name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.EOTY__character_stats {
+  display: flex;
+  margin: 2px;
+  padding: 5px;
+}
+
+.EOTY__action_buttons {
+  padding: 10px 0px 10px 0px;
+}

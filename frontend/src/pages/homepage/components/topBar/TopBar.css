@@ -1,0 +1,34 @@
+.topbar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions__actionbutton {
+  display: flex;
+  align-items: center;
+}
+
+.right-buttons .topbar-button {
+  margin-left: 8px;
+}
+
+.right-buttons .username {
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.username {
+  margin-left: 8px;
+}
+
+.themechange__container {
+  display: flex;
+  align-items: center;
+}

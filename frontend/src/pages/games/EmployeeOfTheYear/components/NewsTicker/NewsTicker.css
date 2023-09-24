@@ -1,0 +1,33 @@
+@keyframes scrolling-typing {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrolling-typing-width {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.scrolling-typing-animation {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid transparent;
+  animation: scrolling-typing linear 15s infinite;
+}
+
+.ticker {
+  width: 0px;
+  animation: scrolling-typing-width linear 15s infinite;
+}

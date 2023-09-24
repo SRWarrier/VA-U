@@ -1,0 +1,5 @@
+.performance_scorecard__row {
+  display: flex;
+  line-height: 20px;
+  background-color: red;
+}

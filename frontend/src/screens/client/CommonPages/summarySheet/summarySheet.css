@@ -1,0 +1,31 @@
+.addclient_summary___header {
+  margin-bottom: 20px;
+}
+
+.addclient_summary_sections {
+  margin-bottom: 30px;
+}
+
+.addclient_summary_contents {
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.addclient_summary_row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.addclient_summary_label {
+  width: 300px;
+  font-weight: bold;
+}
+
+.addclient_summary__buttoncontainer {
+  margin-top: 30px;
+}
+
+.addclient_summary__buttoncontainer button {
+  margin-right: 10px;
+}

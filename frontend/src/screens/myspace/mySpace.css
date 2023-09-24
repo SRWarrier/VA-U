@@ -1,0 +1,11 @@
+.myspace__container {
+  display: flex;
+  position: relative;
+}
+
+.builder_container {
+  display: flex;
+  width: 500px;
+  min-width: none;
+  max-width: 500px;
+}

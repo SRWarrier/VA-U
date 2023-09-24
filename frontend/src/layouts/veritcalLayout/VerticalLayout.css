@@ -1,0 +1,22 @@
+.vertical_layout_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.item {
+  flex-basis: auto;
+  padding: 10px;
+  margin: 10px;
+  min-width: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .item {
+    flex-basis: 100%;
+  }
+}

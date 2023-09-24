@@ -1,0 +1,16 @@
+.line-chart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-header {
+  margin-bottom: 16px;
+}
+
+.chart-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}

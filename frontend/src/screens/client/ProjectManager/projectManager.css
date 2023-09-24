@@ -1,0 +1,28 @@
+.client_title__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px; /* Adjust margin as needed */
+}
+
+.search__container {
+  flex-grow: 1;
+  margin-right: 16px; /* Adjust margin as needed */
+}
+
+.client__action_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.clientmanager__header {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,137 @@
+import React, { useState, useRef } from "react";
+import { useDrop } from "react-dnd";
+import { v4 as uuidv4 } from "uuid";
+import { Resizable } from "react-resizable";
+import { ComponentTransformer } from "./features/componentTransformer";
+import "./MySpaceLayout.css";
+
+const MySpaceLayout = () => {
+  const [boxes, setBoxes] = useState([]);
+  const dropTargetRef = useRef();
+
+  const [{ isOver, canDrop }, dropTarget] = useDrop(() => ({
+    accept: "box",
+    drop: (item, monitor) => {
+      const offset = monitor.getClientOffset();
+      if (offset && dropTargetRef.current) {
+        const dropTargetPosition =
+          dropTargetRef.current.getBoundingClientRect();
+        const dropXPosition =
+          offset.x - dropTargetPosition.left + window.scrollX;
+        const dropYPosition =
+          offset.y - dropTargetPosition.top + window.scrollY;
+
+        setBoxes((prevBoxes) => {
+          const existingItem = prevBoxes.find((box) => box.id === item.id);
+          if (existingItem) {
+            return prevBoxes.map((box) =>
+              box.id === item.id
+                ? {
+                    ...box,
+                    style: {
+                      ...box.style,
+                      left: dropXPosition + "px",
+                      top: dropYPosition + "px",
+                    },
+                  }
+                : box
+            );
+          } else {
+            const newItem = {
+              id: item.id || uuidv4(),
+              name: item.name,
+              type: item.type,
+              component: ComponentTransformer(item.type, item.name),
+              style: {
+                left: dropXPosition + "px",
+                top: dropYPosition + "px",
+                position: "absolute",
+                cursor: "move",
+              },
+            };
+            return [...prevBoxes, newItem];
+          }
+        });
+      }
+    },
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  }));
+
+  const dropZoneStyles = {
+    backgroundColor: isOver && canDrop ? "lightyellow" : "white",
+  };
+
+  const handleResize = (id, width, height) => {
+    setBoxes((prevBoxes) =>
+      prevBoxes.map((box) =>
+        box.id === id
+          ? {
+              ...box,
+              style: {
+                ...box.style,
+                width: `${width}px`,
+                height: `${height}px`,
+              },
+            }
+          : box
+      )
+    );
+  };
+
+  const handleDrag = (id, deltaX, deltaY) => {
+    setBoxes((prevBoxes) =>
+      prevBoxes.map((box) =>
+        box.id === id
+          ? {
+              ...box,
+              style: {
+                ...box.style,
+                left: parseInt(box.style.left) + deltaX + "px",
+                top: parseInt(box.style.top) + deltaY + "px",
+              },
+            }
+          : box
+      )
+    );
+  };
+
+  return (
+    <>
+      <div ref={dropTargetRef} className="myspace__title">
+        MySpace
+      </div>
+      <div className="my-space-layout" ref={dropTarget} style={dropZoneStyles}>
+        <div className="drop-zone-container">
+          {boxes.map((item) => (
+            <Resizable
+              key={item.id}
+              width={parseInt(item.style.width)}
+              height={parseInt(item.style.height)}
+              minConstraints={[100, 100]}
+              onResize={(e, { size }) =>
+                handleResize(item.id, size.width, size.height)
+              }
+            >
+              <div
+                style={item.style}
+                draggable="true"
+                onDrag={(e) => {
+                  const deltaX = e.clientX - parseInt(item.style.left);
+                  const deltaY = e.clientY - parseInt(item.style.top);
+                  handleDrag(item.id, deltaX, deltaY);
+                }}
+              >
+                {item.component}
+              </div>
+            </Resizable>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default MySpaceLayout;

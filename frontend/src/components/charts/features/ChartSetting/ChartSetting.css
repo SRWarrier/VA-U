@@ -1,0 +1,17 @@
+.chartmenu__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.chartmenu__setting {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.chartmenu__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 1;
+}

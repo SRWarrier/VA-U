@@ -1,0 +1,19 @@
+.dragabble__item {
+  padding: 0;
+  margin: 0;
+  cursor: grabbing;
+  transition: transform 0.3s ease;
+}
+
+.dragabble__item--dragging {
+  background-color: aliceblue;
+  border: 20px;
+  opacity: 0.5;
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.dragabble__item--drag {
+  opacity: 1;
+  cursor: grab;
+}

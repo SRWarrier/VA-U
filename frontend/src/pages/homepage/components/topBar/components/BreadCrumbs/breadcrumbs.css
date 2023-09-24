@@ -1,0 +1,6 @@
+.breadcrumb__items {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 5px;
+  text-transform: capitalize;
+}
