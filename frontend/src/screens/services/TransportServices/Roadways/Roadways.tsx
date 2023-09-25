@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 import TripMenu from "./components/tripMenu";
 import ActiveTripsList from "./components/activeTrips";
 import TripDetailsView, {
@@ -15,7 +15,7 @@ const Roadways = () => {
         <TripMenu />
         <ActiveTripsList getDetails={setDetails} />
       </Col>
-      <Col span={14}>{details && <TripDetailsView tripData={details} />}</Col>
+      <Col span={14}>{<TripDetailsView tripData={details} />}</Col>
     </Row>
   );
 };

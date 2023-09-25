@@ -1,7 +1,9 @@
 import { Button, Typography, Modal, Space } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import handleRecordDelete from "./handleRecordDelete";
 import handleEdit from "./handleEdit";
+import handleView from "./handleView";
 import {
   EyeOutlined,
   EditOutlined,
@@ -42,12 +44,19 @@ const VEDActionMenu = ({
   formFields,
   editForm,
 }: VEDActionMenuProps) => {
+  const navigate = useNavigate();
   const [modal, contextHolder] = Modal.useModal();
   const [isVisible, setVisible] = useState(false);
   const confirmDelete = useConfirmDelete(modal);
   const handleEditClick = (record: any) => {
-    setVisible(true);
+    handleEdit(record);
   };
+
+  const handleViewClick = (record: any) => {
+    console.log(record);
+    navigate("/wave");
+  };
+
   return (
     <>
       {contextHolder}
@@ -55,7 +64,7 @@ const VEDActionMenu = ({
         <Button
           type="text"
           icon={<EyeOutlined />}
-          // onClick={() => handleView(record)}
+          onClick={() => handleViewClick(record)}
         />
         <Button
           type="text"

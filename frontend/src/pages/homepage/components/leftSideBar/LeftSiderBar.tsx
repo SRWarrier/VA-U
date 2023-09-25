@@ -1,7 +1,5 @@
 import { Layout, Divider, theme } from "antd";
 import SidebarMenu from "./sidebarMenu";
-import MenuSearch from "../topBar/menuSearch/menuSearch";
-import CollapseMenuButton from "./CollapseMenuButton";
 import { useState } from "react";
 import UserBadge from "./badgeSide";
 
@@ -22,32 +20,24 @@ const LeftSidebar = ({ getNavigation, userLevel = 0 }: LeftSidebarProps) => {
   };
 
   const {
-    token: { colorBgContainer, colorTextLabel },
+    token: { colorBgContainer, colorTextLabel, colorPrimary },
   } = theme.useToken();
 
   return (
     <Sider
       trigger={null}
-      collapsible
-      collapsed={collapsed}
-      className="leftsidebar__container"
-      style={{ background: colorBgContainer }}
+      collapsed={true}
+      style={{
+        background: colorBgContainer,
+      }}
     >
       <div className={`leftsidebar__logo`} style={{ color: colorTextLabel }}>
-        <span style={{ color: "green" }}>
-          <b>T</b>
+        <b>VA-</b>
+        <span style={{ color: colorPrimary }}>
+          <b>U</b>
         </span>
-        ripplr
       </div>
-      <SidebarMenu
-        level={userLevel}
-        handleClick={getNavigation}
-        collapsed={collapsed}
-      />
-      <CollapseMenuButton
-        collapsedState={handleToggleCollapse}
-        collapsed={collapsed}
-      />
+      <SidebarMenu level={userLevel} handleClick={getNavigation} />
       <Divider />
       <UserBadge />
     </Sider>

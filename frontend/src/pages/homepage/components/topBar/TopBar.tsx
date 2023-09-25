@@ -64,7 +64,7 @@ export default function Homepage_TopBar({
   };
 
   const {
-    token: { colorBgContainer },
+    token: { colorBgContainer, colorPrimary, colorTextLabel },
   } = theme.useToken();
 
   const handleTour = () => {

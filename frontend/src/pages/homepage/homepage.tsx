@@ -75,6 +75,7 @@ const Homepage = () => {
             showTaskList={toggleTaskLists}
             setThemeColor={handleSetThemeColor}
           />
+
           <Content className="site-layout-content">
             {location.pathname === "/wave" ? <Overview /> : <Outlet />}
           </Content>

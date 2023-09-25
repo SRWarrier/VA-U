@@ -5,7 +5,6 @@ import { useState } from "react";
 interface SidebarMenuProps {
   level: number; // User role level for menu customization
   handleClick: (itemname: string, itemlink: string) => void;
-  collapsed: boolean;
 }
 
 interface MenuItem {
@@ -18,7 +17,7 @@ interface MenuItem {
   children?: MenuItem[];
 }
 
-const SidebarMenu = ({ level, handleClick, collapsed }: SidebarMenuProps) => {
+const SidebarMenu = ({ level, handleClick }: SidebarMenuProps) => {
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const roleMenu = MenuItems.filter((menuitem) => menuitem.level <= level);
@@ -33,60 +32,16 @@ const SidebarMenu = ({ level, handleClick, collapsed }: SidebarMenuProps) => {
     handleClick(name, link);
   };
 
-  const renderMenuItem = (item: MenuItem) => {
-    const { key, name, icon, link } = item;
-    return (
-      <Menu.Item key={key} icon={icon} onClick={() => handleMenuClick(item)}>
-        {name}
-      </Menu.Item>
-    );
-  };
-
-  const renderSubMenu = (item: MenuItem) => {
-    const { key, name, icon, children } = item;
-
-    if (!collapsed && children && children.length > 0) {
-      const permittedChildren = children.filter(
-        (menuitem) => menuitem.level <= level
-      );
-      return (
-        <Menu.SubMenu
-          key={key}
-          title={name}
-          icon={icon}
-          onTitleClick={() => handleMenuOpen([key])}
-        >
-          {permittedChildren.map((child) => renderMenuItem(child))}
-        </Menu.SubMenu>
-      );
-    } else {
-      return (
-        <Menu.SubMenu key={key} title={name} icon={icon}>
-          {children && children.length > 0 && (
-            <Menu.ItemGroup key={key} title={name}>
-              {children.map((child) => renderMenuItem(child))}
-            </Menu.ItemGroup>
-          )}
-          {!children || children.length === 0 ? renderMenuItem(item) : null}
-        </Menu.SubMenu>
-      );
-    }
-  };
-
   return (
-    <Menu
-      mode="inline"
-      selectedKeys={selectedKeys}
-      className="leftsidebar__centered-menu"
-      openKeys={openKeys}
-      onOpenChange={handleMenuOpen}
-    >
-      {roleMenu.map((item) =>
-        item.children && item.children.length > 0
-          ? renderSubMenu(item)
-          : renderMenuItem(item)
-      )}
-    </Menu>
+    <div style={{ height: "75vh", overflow: "auto" }}>
+      <Menu
+        mode="inline"
+        selectedKeys={selectedKeys}
+        openKeys={openKeys}
+        onOpenChange={handleMenuOpen}
+        items={MenuItems}
+      />
+    </div>
   );
 };
 

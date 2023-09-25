@@ -3,9 +3,10 @@ import { Card, Button, Tooltip, Space } from "antd";
 import { NodeIndexOutlined, ScheduleOutlined } from "@ant-design/icons";
 import TripDetails from "./tripDetails";
 import RouteMap from "../../features/maps/routemap";
+import EmptyCardView from "./TripDetailsEmptyView";
 
 interface ExtendedViewProps {
-  tripData: TripDetailsProps;
+  tripData: TripDetailsProps | undefined;
 }
 
 interface TripDetailsProps {
@@ -65,10 +66,14 @@ const ExtendedView = ({ tripData }: ExtendedViewProps) => {
       }
       style={{ width: "100%" }}
     >
-      {toggleView === "schedule" ? (
-        <TripDetails tripScheduleDetails={tripData.schedule} />
+      {tripData ? (
+        toggleView === "schedule" ? (
+          <TripDetails tripScheduleDetails={tripData.schedule} />
+        ) : (
+          <RouteMap tripdata={tripData} />
+        )
       ) : (
-        <RouteMap tripdata={tripData} />
+        <EmptyCardView />
       )}
     </Card>
   );

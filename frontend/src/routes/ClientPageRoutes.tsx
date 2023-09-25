@@ -4,6 +4,7 @@ import {
   DashBoard,
   ProjectManager,
   Reports,
+  ViewClient,
 } from "../screens/client";
 
 import AddClientPage from "@screens/client/ClientManager/AddClient/addClientView";
@@ -36,6 +37,10 @@ const ClientPageRoutes = {
     {
       path: "register/addclient",
       element: <AddClientPage />,
+    },
+    {
+      path: "viewclient",
+      element: <ViewClient />,
     },
     {
       path: "projects/addproject",

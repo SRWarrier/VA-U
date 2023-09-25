@@ -20,7 +20,7 @@ const handleEdit = ({
   const handleCancel = () => {
     setVisible(false);
   };
-
+  console.log(record);
   return (
     <Modal
       title={modalTitle}

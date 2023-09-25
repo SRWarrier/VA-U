@@ -9,79 +9,40 @@ interface generateFormProps {
 }
 
 const generateForm = () => {
-  const addTripForm: FormFieldsTypes[][] = [
+  const clientEditForm: FormFieldsTypes[][] = [
     [
       {
         label: "Client Name",
         name: "client Name",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
+        inputType: "input",
       },
     ],
     [
       {
-        label: "Project Name",
-        name: "projectName",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
+        label: "Address",
+        name: "address",
+        inputType: "input",
       },
     ],
     [
       {
-        label: "Vendor Name",
-        name: "vendorName",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
-      },
-      {
-        label: "Driver Name",
-        name: "driverName",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
-      },
-    ],
-    [
-      {
-        label: "Vehicle Number",
-        name: "vehicleNumber",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
-      },
-      {
-        label: "Vehicle",
-        name: "VehicleType",
-        inputType: "select",
-        selectOptions: [{ label: "Reefer", value: "reefer" }],
-      },
-      {
-        label: "Container",
-        name: "containerType",
+        label: "Entity Type",
+        name: "entity type",
         inputType: "select",
         selectOptions: [
-          { label: "Reefer", value: "reefer" },
-          { label: "Reefer", value: "reefer" },
+          { label: "Company", value: "company" },
+          { label: "Individual", value: "individual" },
         ],
       },
-    ],
-    [
-      { label: "Trip Start Time", inputType: "date", name: "TripStart" },
-      { label: "Trip End Time", inputType: "date", name: "TripEnd" },
-    ],
-    [
-      { label: "Trip Start KM", inputType: "number", name: "TripStartKM" },
-      { label: "Trip End KM", inputType: "number", name: "TripEndKM" },
-    ],
-    [
       {
-        label: "Routeplans",
+        label: "Industry",
+        name: "industry",
         inputType: "select",
-        selectOptions: [{ label: "routePlans", value: "hello" }],
-        onChangeFn: () => console.log("hello"),
-        name: "routeplan",
+        selectOptions: [{ label: "Food", value: "food" }],
       },
     ],
   ];
-  return addTripForm;
+  return clientEditForm;
 };
 
 export { generateForm };
